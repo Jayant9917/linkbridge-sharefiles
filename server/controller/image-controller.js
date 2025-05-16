@@ -16,9 +16,12 @@ export const uploadImage = async (request, response) => {
     
     try {
         const file = await File.create(fileObj);
-        const port = process.env.PORT || 10000;
+        const baseUrl = process.env.NODE_ENV === 'production' 
+            ? 'https://linkbridge-backend.onrender.com'
+            : `http://localhost:${process.env.PORT || 10000}`;
+            
         response.status(200).json({ 
-            path: `http://localhost:${port}/file/${file._id}`,
+            path: `${baseUrl}/file/${file._id}`,
             message: 'File uploaded successfully'
         });
     } catch (error) {
