@@ -95,9 +95,9 @@ function Contact() {
         <div className="social-links">
           <h3>Connect With Us</h3>
           <div className="social-icons">
-            <a href="#" className="social-icon">LinkedIn</a>
-            <a href="#" className="social-icon">GitHub</a>
-            <a href="#" className="social-icon">Twitter</a>
+            <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer" className="social-icon">LinkedIn</a>
+            <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer" className="social-icon">GitHub</a>
+            <a href="https://twitter.com/your-handle" target="_blank" rel="noopener noreferrer" className="social-icon">Twitter</a>
           </div>
         </div>
       </div>

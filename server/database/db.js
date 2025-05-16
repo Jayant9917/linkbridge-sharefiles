@@ -4,15 +4,19 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const DBConnection = async () => {
-    // const USERNAME = process.env.DB_USERNAME;
-    // const PASSWORD = process.env.DB_PASSWORD;
+    const MONGO_URI = process.env.MONGODB_URI;
+    
+    if (!MONGO_URI) {
+        console.error('MongoDB URI is not defined in environment variables');
+        process.exit(1);
+    }
 
-    const MONGO_URI = `mongodb+srv://admin:jayant132465rana@cluster0.cty7ree.mongodb.net/LinkBridge_app`;
     try {
         await mongoose.connect(MONGO_URI);
         console.log('Database connected successfully');
     } catch (error) {
-        console.log('Error while connecting with the database ', error.message);
+        console.error('Error while connecting with the database:', error.message);
+        process.exit(1);
     }
 }
 

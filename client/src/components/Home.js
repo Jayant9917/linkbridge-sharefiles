@@ -38,9 +38,37 @@ const Home = () => {
     }
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(downloadLink);
-    // You could add a toast notification here
+  const copyToClipboard = async () => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        // For HTTPS or localhost
+        await navigator.clipboard.writeText(downloadLink);
+        alert('Link copied to clipboard!');
+      } else {
+        // Fallback for non-HTTPS
+        const textArea = document.createElement('textarea');
+        textArea.value = downloadLink;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          document.execCommand('copy');
+          alert('Link copied to clipboard!');
+        } catch (err) {
+          console.error('Failed to copy text: ', err);
+          alert('Failed to copy link. Please try selecting and copying manually.');
+        }
+        
+        textArea.remove();
+      }
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+      alert('Failed to copy link. Please try selecting and copying manually.');
+    }
   };
 
   return (
