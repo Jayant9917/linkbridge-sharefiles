@@ -13,6 +13,10 @@ dotenv.config();
 
 const app = express();
 
+app.get('/', (req, res) => {
+    res.json({ message: 'Welcome to LinkBridge API' });
+});
+
 // Security middleware
 app.use(helmet());
 
