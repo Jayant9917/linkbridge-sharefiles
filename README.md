@@ -123,6 +123,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 Jayant Rana - ranajaynt527@gmail.com
+contact  - 7819016236
 
 Project Link: [https://github.com/Jayant9917/LinkBridge](https://github.com/Jayant9917/LinkBridge)
 
